@@ -1,5 +1,3 @@
-
-
 #include "ft_printf.h"
 
 static int	print_number_base(int nbr, char *base)
