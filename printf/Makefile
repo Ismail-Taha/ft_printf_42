@@ -8,10 +8,10 @@ SRCS		= ft_printf.c \
 			  ft_printbnum.c
 OBJS		= ${SRCS:.c=.o}
 NAME		= libftprintf.a
-CC			= gcc -Wall -Wextra -Werror
+CC			= cc -Wall -Wextra -Werror
 
 %.o: %.c ft_printf.h
-			${CC} -I. -c $< -o ${<:.c=.o}
+			${CC} -I. -c $< -o $@
 
 all:		${NAME}
 
