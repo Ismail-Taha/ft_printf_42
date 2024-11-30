@@ -1,4 +1,3 @@
-
 #include "ft_printf.h"
 
 int	print_char(char c)

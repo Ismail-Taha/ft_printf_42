@@ -1,4 +1,3 @@
-
 #include "ft_printf.h"
 
 int	process_normal(const char *str, va_list *params, t_opt opt)
