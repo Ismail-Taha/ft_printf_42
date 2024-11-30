@@ -11,7 +11,7 @@ NAME		= libftprintf.a
 CC			= gcc -Wall -Wextra -Werror
 
 %.o: %.c ft_printf.h
-			${CC} -I. -c $< -o ${<:.c=.o}
+			${CC} -I. -c $< -o $@
 
 all:		${NAME}
 
