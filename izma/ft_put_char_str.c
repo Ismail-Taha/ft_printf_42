@@ -1,4 +1,3 @@
-
 #include "ft_printf.h"
 
 int	ft_puts(char c)
@@ -6,10 +5,11 @@ int	ft_puts(char c)
 	return (write(1, &c, 1));
 }
 
-int	ft_putchar(va_list args)
+int	ft_putchar(va_list args, t_flags *flags)
 {
 	char	c;
 
+	(void)flags;
 	c = (char)va_arg(args, int);
 	return (ft_puts(c));
 }
@@ -31,10 +31,11 @@ int	ft_putstring(char *str)
 	return (i);
 }
 
-int	ft_putstr(va_list args)
+int	ft_putstr(va_list args, t_flags *flags)
 {
 	char	*str;
 
+	(void)flags;
 	str = va_arg(args, char *);
 	return (ft_putstring(str));
 }

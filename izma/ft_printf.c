@@ -1,5 +1,27 @@
-
 #include "ft_printf.h"
+
+int	parse_flags(const char **format, t_flags *flags)
+{
+    int parsed = 0;
+
+    flags->space = 0;
+    flags->hash = 0;
+    flags->plus = 0;
+    while (**format == ' ' || **format == '#' || **format == '+')
+    {
+        if (**format == ' ')
+            flags->space = 1;
+        else if (**format == '#')
+            flags->hash = 1;
+        else if (**format == '+')
+            flags->plus = 1;
+
+        (*format)++;
+        parsed = 1;
+    }
+
+    return parsed;
+}
 
 int	ft_printf(const char *format, ...)
 {
