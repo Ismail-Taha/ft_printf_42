@@ -1,4 +1,3 @@
-
 #include "ft_printf.h"
 
 char	base_to_char(unsigned long num, char c)
@@ -13,32 +12,47 @@ char	base_to_char(unsigned long num, char c)
 	return (hex_digits[num]);
 }
 
-int	ft_puthe16a(va_list args)
+int	ft_puthe16a(va_list args, t_flags *flags)
 {
 	char			buffer[9];
 	int				i;
 	unsigned int	num;
+	int				printed;
 
 	num = va_arg(args, unsigned int);
 	buffer[8] = '\0';
 	i = 7;
+	printed = 0;
+	if (flags->hash && num != 0)
+	{
+		printed += ft_putstring("0X");
+	}
+
 	if (num == 0)
 		return (ft_puts('0'));
+
 	while (num > 0)
 	{
 		buffer[i--] = base_to_char(num % 16, 'X');
 		num /= 16;
 	}
-	return (ft_putstring(buffer + (i + 1)));
+	return (printed + ft_putstring(buffer + (i + 1)));
 }
 
-int	ft_puthexa(va_list args)
+int	ft_puthexa(va_list args, t_flags *flags)
 {
 	char			buffer[9];
 	int				i;
 	unsigned int	num;
+	int				printed;
 
 	num = va_arg(args, unsigned int);
+	printed = 0;
+	if (flags->hash && num != 0)
+	{
+		printed += ft_putstring("0x");
+	}
+
 	if (num == 0)
 		return (ft_puts('0'));
 	buffer[8] = '\0';
@@ -48,10 +62,10 @@ int	ft_puthexa(va_list args)
 		buffer[i--] = base_to_char(num % 16, 'x');
 		num /= 16;
 	}
-	return (ft_putstring(buffer + i + 1));
+	return (printed + ft_putstring(buffer + i + 1));
 }
 
-int	ft_putnbr(va_list args)
+int	ft_putnbr(va_list args, t_flags *flags)
 {
 	int				num;
 	unsigned int	n;
@@ -62,6 +76,10 @@ int	ft_putnbr(va_list args)
 	count = 0;
 	i = 10;
 	num = va_arg(args, int);
+	if (flags->plus && num >= 0)
+		count += ft_puts('+');
+	else if (flags->space && num >= 0)
+		count += ft_puts(' ');
 	if (num < 0)
 	{
 		count += ft_puts('-');
@@ -71,7 +89,7 @@ int	ft_putnbr(va_list args)
 		n = num;
 	buffer[11] = '\0';
 	if (num == 0)
-		return (ft_puts('0'));
+		return (count + ft_puts('0'));
 	while (n > 0)
 	{
 		buffer[i--] = n % 10 + '0';
@@ -80,15 +98,17 @@ int	ft_putnbr(va_list args)
 	return (count + ft_putstring(buffer + (i + 1)));
 }
 
-int	ft_putnbr_unsigned(va_list args)
+int	ft_putnbr_unsigned(va_list args, t_flags *flags)
 {
 	char			buffer[11];
 	int				i;
 	unsigned int	num;
 
+	(void)flags;
 	num = va_arg(args, unsigned int);
 	if (num == 0)
 		return (ft_puts('0'));
+
 	i = 10;
 	buffer[i] = '\0';
 	while (num > 0)
