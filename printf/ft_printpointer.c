@@ -43,6 +43,15 @@ int	ft_printpointer(void *ptr, t_opt opt)
 	int		total;
 	int		len;
 
+	if (ptr == NULL)
+	{
+		total = 0;
+		total += print_str("(nil)");
+		while (total < opt.offset)
+			total += print_char(' ');
+		return (total);
+	}
+
 	addr = (long unsigned)ptr;
 	total = 0;
 	len = get_hex_size(addr) + 2;
