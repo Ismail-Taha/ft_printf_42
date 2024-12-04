@@ -67,35 +67,31 @@ int	ft_puthexa(va_list args, t_flags *flags)
 
 int	ft_putnbr(va_list args, t_flags *flags)
 {
-	int				num;
-	unsigned int	n;
-	unsigned int	count;
-	char			buffer[12];
-	int				i;
+	t_tool t;
 
-	count = 0;
-	i = 10;
-	num = va_arg(args, int);
-	if (flags->plus && num >= 0)
-		count += ft_puts('+');
-	else if (flags->space && num >= 0)
-		count += ft_puts(' ');
-	if (num < 0)
+	t.count = 0;
+	t.i = 10;
+	t.num = va_arg(args, int);
+	if (flags->plus && t.num >= 0)
+		t.count += ft_puts('+');
+	else if (flags->space && t.num >= 0)
+		t.count += ft_puts(' ');
+	if (t.num < 0)
 	{
-		count += ft_puts('-');
-		n = -num;
+		t.count += ft_puts('-');
+		t.n = -t.num;
 	}
 	else
-		n = num;
-	buffer[11] = '\0';
-	if (num == 0)
-		return (count + ft_puts('0'));
-	while (n > 0)
+		t.n = t.num;
+	t.buffer[11] = '\0';
+	if (t.num == 0)
+		return (t.count + ft_puts('0'));
+	while (t.n > 0)
 	{
-		buffer[i--] = n % 10 + '0';
-		n /= 10;
+		t.buffer[t.i--] = t.n % 10 + '0';
+		t.n /= 10;
 	}
-	return (count + ft_putstring(buffer + (i + 1)));
+	return (t.count + ft_putstring(t.buffer + (t.i + 1)));
 }
 
 int	ft_putnbr_unsigned(va_list args, t_flags *flags)
@@ -108,7 +104,6 @@ int	ft_putnbr_unsigned(va_list args, t_flags *flags)
 	num = va_arg(args, unsigned int);
 	if (num == 0)
 		return (ft_puts('0'));
-
 	i = 10;
 	buffer[i] = '\0';
 	while (num > 0)
