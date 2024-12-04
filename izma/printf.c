@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   printf.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isallali <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: isallali <isallali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 22:26:23 by isallali          #+#    #+#             */
-/*   Updated: 2024/12/04 22:27:30 by isallali         ###   ########.fr       */
+/*   Updated: 2024/12/04 23:07:30 by isallali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "printf.h"
 
 int	ft_printf(const char *format, ...)
 {

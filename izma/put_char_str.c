@@ -1,6 +1,18 @@
-#include "ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   put_char_str.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: isallali <isallali@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/04 23:07:06 by isallali          #+#    #+#             */
+/*   Updated: 2024/12/04 23:12:23 by isallali         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int	ft_puts(char c)
+#include "printf.h"
+
+int	ft_putc(char c)
 {
 	return (write(1, &c, 1));
 }
@@ -14,7 +26,7 @@ int	ft_putchar(va_list args, t_flags *flags)
 	return (ft_puts(c));
 }
 
-int	ft_putstring(char *str)
+int	ft_putstrr(char *str)
 {
 	int	i;
 

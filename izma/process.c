@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_looper.c                                        :+:      :+:    :+:   */
+/*   process.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isallali <isallali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 15:20:12 by isallali          #+#    #+#             */
-/*   Updated: 2024/12/04 15:20:13 by isallali         ###   ########.fr       */
+/*   Updated: 2024/12/04 23:06:44 by isallali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "printf.h"
 
-static int	ft_format_checker(const char *format)
+static int	check_format(const char *format)
 {
 	int	i;
 
@@ -33,7 +33,7 @@ static int	ft_format_checker(const char *format)
 	return (0);
 }
 
-static int	print_specifier(char c, t_holder *printers,
+static int	print_specf(char c, t_holder *printers,
 	va_list args, t_flags *flags)
 {
 	int	j;
@@ -47,7 +47,8 @@ static int	print_specifier(char c, t_holder *printers,
 	}
 	return (ft_puts('%') + ft_puts(c));
 }
-void pars_flag(const char *format, t_flags *flags, int *i)
+
+static void	pars_flag(const char *format, t_flags *flags, int *i)
 {
 	(*i)++;
 	flags->space = 0;
@@ -64,10 +65,11 @@ void pars_flag(const char *format, t_flags *flags, int *i)
 		(*i)++;
 	}
 }
-int	ft_looper(const char *format, t_holder *printers,
+
+int	process(const char *format, t_holder *printers,
 		va_list args, int *count)
 {
-	t_flags flags;
+	t_flags	flags;
 
 	if (ft_format_checker(format))
 		return (-1);
@@ -83,7 +85,7 @@ int	ft_looper(const char *format, t_holder *printers,
 				continue ;
 			}
 			flags.ret = print_specifier(format[flags.index++],
-				printers, args, &flags);
+					printers, args, &flags);
 			if (flags.ret == -1)
 				return (-1);
 			*count += flags.ret;
