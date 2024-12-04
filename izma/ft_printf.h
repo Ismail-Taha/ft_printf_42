@@ -12,7 +12,18 @@ typedef struct s_flags
     int space;
     int hash;
     int plus;
+    int	index;
+	int	ret;
 } t_flags;
+
+typedef struct s_tool
+{
+    int				num;
+	unsigned int	n;
+	unsigned int	count;
+	char			buffer[12];
+	int				i;
+}   t_tool;
 
 /* helpers */
 char	base_to_char(unsigned long num, char c);
@@ -39,6 +50,5 @@ typedef struct functions_holder
 int		ft_printf(const char *format, ...);
 int		ft_looper(const char *format, t_holder *printers,
 			va_list args, int *count);
-int     parse_flags(const char **format, t_flags *flags);
 
 #endif
