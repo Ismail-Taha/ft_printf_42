@@ -6,12 +6,28 @@
 /*   By: isallali <isallali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 15:20:12 by isallali          #+#    #+#             */
-/*   Updated: 2024/12/05 21:40:10 by isallali         ###   ########.fr       */
+/*   Updated: 2024/12/05 22:02:50 by isallali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
-#include <string.h>
+
+static char	*ft_strchr(char *s, int i)
+{
+	char	c;
+
+	c = (char)i;
+	while (*s)
+	{
+		if (*s == c)
+			return ((char *)s);
+		s++;
+	}
+	if (c == '\0')
+		return ((char *)s);
+	return (0);
+}
+
 static int	check_format(const char *format)
 {
 	int	i;
@@ -26,7 +42,7 @@ static int	check_format(const char *format)
 		if (format[i] == '%')
 		{
 			i++;
-			if (strchr("cspxXudi%", format[i]) && format[i + 1] != '\0')
+			if (ft_strchr("cspxXudi%", format[i]) && format[i + 1] != '\0')
 			{
 				i++;
 				continue;
