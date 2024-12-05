@@ -6,7 +6,7 @@
 /*   By: isallali <isallali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 23:07:16 by isallali          #+#    #+#             */
-/*   Updated: 2024/12/05 15:22:13 by isallali         ###   ########.fr       */
+/*   Updated: 2024/12/05 22:08:03 by isallali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,12 @@ int	ft_putptr(va_list args, t_flags *flags)
 	i = 15;
 	if (num == 0)
 		return (ft_putstrr("(nil)"));
-	if (flags->space)
+	if (flags->space && flags->plus)
+		count += ft_putc('+');
+	else if (flags->space)
 		count += ft_putc(' ');
+	else
+		count += ft_putc('+');
 	while (num > 0)
 	{
 		buffer[i--] = base_to_char(num % 16, 'x');
