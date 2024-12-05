@@ -6,7 +6,7 @@
 /*   By: isallali <isallali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 23:07:16 by isallali          #+#    #+#             */
-/*   Updated: 2024/12/05 22:08:03 by isallali         ###   ########.fr       */
+/*   Updated: 2024/12/05 22:36:04 by isallali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_putptr(va_list args, t_flags *flags)
 		count += ft_putc('+');
 	else if (flags->space)
 		count += ft_putc(' ');
-	else
+	else if (flags->plus)
 		count += ft_putc('+');
 	while (num > 0)
 	{
