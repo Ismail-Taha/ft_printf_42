@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printf.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: isallali <isallali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 22:26:23 by isallali          #+#    #+#             */
-/*   Updated: 2024/12/05 13:19:47 by marvin           ###   ########.fr       */
+/*   Updated: 2024/12/05 15:16:09 by isallali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 int	ft_printf(const char *format, ...)
 {
-	t_holder	printers[9];
+	t_format	printers[9];
 	int			count;
 	va_list		args;
 
 	count = 0;
-	printers[0] = (f_holder){'c', ft_putchar};
-	printers[1] = (f_holder){'s', ft_putstr};
-	printers[2] = (f_holder){'p', ft_putpointer};
-	printers[3] = (f_holder){'d', ft_putnbr};
-	printers[4] = (f_holder){'i', ft_putnbr};
-	printers[5] = (f_holder){'u', ft_putnbr_unsigned};
-	printers[6] = (f_holder){'x', ft_puthexa};
-	printers[7] = (f_holder){'X', ft_puthe16a};
-	printers[8] = (f_holder){'\0', NULL};
+	printers[0] = (t_format){'c', ft_putchar};
+	printers[1] = (t_format){'s', ft_putstr};
+	printers[2] = (t_format){'p', ft_putptr};
+	printers[3] = (t_format){'d', ft_putnbr};
+	printers[4] = (t_format){'i', ft_putnbr};
+	printers[5] = (t_format){'u', ft_putnbr_unsg};
+	printers[6] = (t_format){'x', ft_puthex};
+	printers[7] = (t_format){'X', ft_puthexxa};
+	printers[8] = (t_format){'\0', NULL};
 	va_start(args, format);
-	count = ft_looper(format, printers, args, &count);
+	count = process(format, printers, args, &count);
 	va_end(args);
 	return (count);
 }

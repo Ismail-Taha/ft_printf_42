@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_pointer.c                                      :+:      :+:    :+:   */
+/*   put_ptr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isallali <isallali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 23:07:16 by isallali          #+#    #+#             */
-/*   Updated: 2024/12/04 23:10:37 by isallali         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:22:13 by isallali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ int	ft_putptr(va_list args, t_flags *flags)
 	buffer[16] = '\0';
 	i = 15;
 	if (num == 0)
-		return (ft_putstring("(nil)"));
+		return (ft_putstrr("(nil)"));
 	if (flags->space)
-		count += ft_puts(' ');
+		count += ft_putc(' ');
 	while (num > 0)
 	{
 		buffer[i--] = base_to_char(num % 16, 'x');
 		num /= 16;
 	}
-	count += ft_putstring("0x") + ft_putstring(buffer + i + 1);
+	count += ft_putstrr("0x") + ft_putstrr(buffer + i + 1);
 	return (count);
 }

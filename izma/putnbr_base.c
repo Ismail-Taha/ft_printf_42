@@ -6,7 +6,7 @@
 /*   By: isallali <isallali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 23:07:19 by isallali          #+#    #+#             */
-/*   Updated: 2024/12/04 23:14:42 by isallali         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:20:48 by isallali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	base_to_char(unsigned long num, char c)
 	return (hex_digits[num]);
 }
 
-int	ft_puthe16a(va_list args, t_flags *flags)
+int	ft_puthexxa(va_list args, t_flags *flags)
 {
 	char			buffer[9];
 	int				i;
@@ -37,19 +37,19 @@ int	ft_puthe16a(va_list args, t_flags *flags)
 	printed = 0;
 	if (flags->hash && num != 0)
 	{
-		printed += ft_putstring("0X");
+		printed += ft_putstrr("0X");
 	}
 	if (num == 0)
-		return (ft_puts('0'));
+		return (ft_putc('0'));
 	while (num > 0)
 	{
 		buffer[i--] = base_to_char(num % 16, 'X');
 		num /= 16;
 	}
-	return (printed + ft_putstring(buffer + (i + 1)));
+	return (printed + ft_putstrr(buffer + (i + 1)));
 }
 
-int	ft_puthexa(va_list args, t_flags *flags)
+int	ft_puthex(va_list args, t_flags *flags)
 {
 	char			buffer[9];
 	int				i;
@@ -60,10 +60,10 @@ int	ft_puthexa(va_list args, t_flags *flags)
 	printed = 0;
 	if (flags->hash && num != 0)
 	{
-		printed += ft_putstring("0x");
+		printed += ft_putstrr("0x");
 	}
 	if (num == 0)
-		return (ft_puts('0'));
+		return (ft_putc('0'));
 	buffer[8] = '\0';
 	i = 7;
 	while (num > 0)
@@ -71,7 +71,7 @@ int	ft_puthexa(va_list args, t_flags *flags)
 		buffer[i--] = base_to_char(num % 16, 'x');
 		num /= 16;
 	}
-	return (printed + ft_putstring(buffer + i + 1));
+	return (printed + ft_putstrr(buffer + i + 1));
 }
 
 int	ft_putnbr(va_list args, t_flags *flags)
@@ -82,28 +82,28 @@ int	ft_putnbr(va_list args, t_flags *flags)
 	t.i = 10;
 	t.num = va_arg(args, int);
 	if (flags->plus && t.num >= 0)
-		t.count += ft_puts('+');
+		t.count += ft_putc('+');
 	else if (flags->space && t.num >= 0)
-		t.count += ft_puts(' ');
+		t.count += ft_putc(' ');
 	if (t.num < 0)
 	{
-		t.count += ft_puts('-');
+		t.count += ft_putc('-');
 		t.n = -t.num;
 	}
 	else
 		t.n = t.num;
 	t.buffer[11] = '\0';
 	if (t.num == 0)
-		return (t.count + ft_puts('0'));
+		return (t.count + ft_putc('0'));
 	while (t.n > 0)
 	{
 		t.buffer[t.i--] = t.n % 10 + '0';
 		t.n /= 10;
 	}
-	return (t.count + ft_putstring(t.buffer + (t.i + 1)));
+	return (t.count + ft_putstrr(t.buffer + (t.i + 1)));
 }
 
-int	ft_putnbr_unsigned(va_list args, t_flags *flags)
+int	ft_putnbr_unsg(va_list args, t_flags *flags)
 {
 	char			buffer[11];
 	int				i;
@@ -112,7 +112,7 @@ int	ft_putnbr_unsigned(va_list args, t_flags *flags)
 	(void)flags;
 	num = va_arg(args, unsigned int);
 	if (num == 0)
-		return (ft_puts('0'));
+		return (ft_putc('0'));
 	i = 10;
 	buffer[i] = '\0';
 	while (num > 0)
@@ -120,5 +120,5 @@ int	ft_putnbr_unsigned(va_list args, t_flags *flags)
 		buffer[--i] = num % 10 + '0';
 		num /= 10;
 	}
-	return (ft_putstring(buffer + i));
+	return (ft_putstrr(buffer + i));
 }

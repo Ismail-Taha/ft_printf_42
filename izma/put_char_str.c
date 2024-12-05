@@ -6,7 +6,7 @@
 /*   By: isallali <isallali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 23:07:06 by isallali          #+#    #+#             */
-/*   Updated: 2024/12/04 23:12:23 by isallali         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:17:27 by isallali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_putchar(va_list args, t_flags *flags)
 
 	(void)flags;
 	c = (char)va_arg(args, int);
-	return (ft_puts(c));
+	return (ft_putc(c));
 }
 
 int	ft_putstrr(char *str)
@@ -37,7 +37,7 @@ int	ft_putstrr(char *str)
 	}
 	while (str[i] != '\0')
 	{
-		if (ft_puts(str[i++]) == -1)
+		if (ft_putc(str[i++]) == -1)
 			return (-1);
 	}
 	return (i);
@@ -49,5 +49,5 @@ int	ft_putstr(va_list args, t_flags *flags)
 
 	(void)flags;
 	str = va_arg(args, char *);
-	return (ft_putstring(str));
+	return (ft_putstrr(str));
 }
