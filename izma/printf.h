@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printf.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isallali <isallali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 22:51:00 by isallali          #+#    #+#             */
-/*   Updated: 2024/12/04 23:10:04 by isallali         ###   ########.fr       */
+/*   Updated: 2024/12/05 13:19:24 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ int		ft_puthexa(va_list args, t_flags *flags);
 int		ft_puthe16a(va_list args, t_flags *flags);
 int		ft_putptr(va_list args, t_flags *flags);
 
-typedef struct functions_holder
+typedef struct prf_holder
 {
 	char	symbol;
 	int		(*puts)(va_list arg, t_flags *flags);
-}	t_holder;
+}	f_holder;
 
 int		ft_printf(const char *format, ...);
 int		process(const char *format, t_holder *printers,
