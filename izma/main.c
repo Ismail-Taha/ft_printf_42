@@ -1,8 +1,10 @@
-#include "ft_printf.h"
+#include "printf.h"
 #include <stdio.h>
 
 int main(void) {
-    ft_printf("%d\n",ft_printf("%+d\n", 754));
-	printf("%d\n",printf("%+d\n", 745));
+
+    void *ptr;
+    ft_printf("\n%d\n",ft_printf("fghjkl%", 1));
+	printf("\n%d\n",printf("vbnm%", 1));
     return 0;
 }
