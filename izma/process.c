@@ -6,7 +6,7 @@
 /*   By: isallali <isallali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 15:20:12 by isallali          #+#    #+#             */
-/*   Updated: 2024/12/05 16:42:09 by isallali         ###   ########.fr       */
+/*   Updated: 2024/12/05 21:40:10 by isallali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	check_format(const char *format)
 		if (format[i] == '%')
 		{
 			i++;
-			if (strchr("cspxXudi", format[i]) && format[i + 1] != '\0')
+			if (strchr("cspxXudi%", format[i]) && format[i + 1] != '\0')
 			{
 				i++;
 				continue;
