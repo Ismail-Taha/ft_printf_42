@@ -1,10 +1,12 @@
 #include "printf.h"
 #include <stdio.h>
+#include <limits.h>
+
 
 int main(void) {
 
-    void *ptr;
-    ft_printf("\n%d\n",ft_printf("fghjkl%", 1));
-	printf("\n%d\n",printf("vbnm%", 1));
+    char *str = "abc%                       +            s\n%       ++ +     d\n%## + pdef\n";
+    ft_printf("\n%d\n",ft_printf(str, "Hello World", INT_MAX, str));
+	printf("\n%d\n",printf(str, "Hello World", INT_MAX, str));
     return 0;
 }
