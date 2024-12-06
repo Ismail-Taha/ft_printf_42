@@ -6,7 +6,7 @@
 /*   By: isallali <isallali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 22:51:00 by isallali          #+#    #+#             */
-/*   Updated: 2024/12/05 15:12:08 by isallali         ###   ########.fr       */
+/*   Updated: 2024/12/06 14:41:28 by isallali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_flags
 	int	plus;
 	int	index;
 	int	ret;
+	int	validation;
 }	t_flags;
 
 typedef struct s_tool
@@ -42,6 +43,7 @@ typedef struct prf_format
 	int		(*puts)(va_list arg, t_flags *flags);
 }	t_format;
 
+char	*ft_strchr(char *s, int i);
 char	base_to_char(unsigned long num, char c);
 int		ft_putc(char c);
 int		ft_putstrr(char *str);
